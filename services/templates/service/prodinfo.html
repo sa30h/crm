@@ -1,0 +1,56 @@
+{% extends 'service/main.html' %}
+
+{% block content %}
+
+	<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Product :&ensp; {{product.Product_no}}</h5>
+			<hr>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'updateproduct' product.id %}">Update Product</a>
+			<a class="btn btn-outline-danger  btn-sm btn-block" href="{% url 'delete_product' product.id %}">Delete Product</a>
+
+		</div>
+	</div>
+
+	{% comment %} <div class="col-md">
+		<div class="card card-body">
+			<h5>Contact Information</h5>
+			<hr>
+			<p>Email: {{customer.email_id}}</p>
+			<p>Phone: {{customer.contact}}</p>
+		</div>
+	</div> {% endcomment %}
+
+</div>
+
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<form method="get">
+		    <button class="btn btn-primary" type="submit">Search</button>
+		    </form>
+		</div>
+	</div>
+	
+</div>
+<br>
+
+<div class="col-md">
+		<div class="card card-body">
+			<h5>Details</h5>
+			<hr>
+			<p>Product no          : {{product.Product_no}}</p>
+			<p>Product name        : {{product.Product_name}}</p>
+            <p>cost                : {{product.cost}}</p>
+            <p>Company name        : {{product.Company_name}}</p>
+            <p>Product Description : {{product.Product_Description}}</p>
+		</div>
+</div>
+
+
+{% endblock %}
