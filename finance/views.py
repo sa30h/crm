@@ -9,7 +9,68 @@ from .forms import *
 from .filters import *
 from django.db.models.signals import pre_save,post_save
 from django.db.models import Q
+from rest_framework.generics import GenericAPIView
+from rest_framework.mixins import ListModelMixin,CreateModelMixin,RetrieveModelMixin,UpdateModelMixin,DestroyModelMixin
+from rest_framework.authentication import SessionAuthentication
+from .serializer import *
 
+
+
+# PurchaseOrderSerializer
+# MonthlySalary
+class InvoiceApiView(GenericAPIView,ListModelMixin,CreateModelMixin):
+    queryset=Invoice.objects.all()
+    serializer_class=InvoiceSerializer
+    authentication_classes=[SessionAuthentication]
+    
+    def get(self,request,*args,**kwargs):
+        return self.list(request,*args,**kwargs)
+
+    def post(self,request,*args,**kwargs):
+        return self.create(request,*args,**kwargs)
+
+class UD_InvoiceApiView(GenericAPIView,UpdateModelMixin,RetrieveModelMixin,DestroyModelMixin):
+    queryset=Invoice.objects.all()
+    serializer_class=InvoiceSerializer
+    authentication_classes=[SessionAuthentication]
+
+
+
+    def get(self,request,*args,**kwargs):
+        return self.retrieve(request,*args,**kwargs)
+
+    def put(self,request,*args,**kwargs):
+        return self.update(request,*args,**kwargs)
+
+    def delete(self,request,*args,**kwargs):
+        return self.destroy(request,*args,**kwargs)
+
+class PoApiView(GenericAPIView,ListModelMixin,CreateModelMixin):
+    queryset=PurchaseOrder.objects.all()
+    serializer_class=PurchaseOrderSerializer
+    authentication_classes=[SessionAuthentication]
+    
+    def get(self,request,*args,**kwargs):
+        return self.list(request,*args,**kwargs)
+
+    def post(self,request,*args,**kwargs):
+        return self.create(request,*args,**kwargs)
+
+class UD_PoApiView(GenericAPIView,UpdateModelMixin,RetrieveModelMixin,DestroyModelMixin):
+    queryset=PurchaseOrder.objects.all()
+    serializer_class=PurchaseOrderSerializer
+    authentication_classes=[SessionAuthentication]
+
+
+
+    def get(self,request,*args,**kwargs):
+        return self.retrieve(request,*args,**kwargs)
+
+    def put(self,request,*args,**kwargs):
+        return self.update(request,*args,**kwargs)
+
+    def delete(self,request,*args,**kwargs):
+        return self.destroy(request,*args,**kwargs)
 
 
 

@@ -31,21 +31,21 @@ class CR_ProjectApiView(GenericAPIView,ListModelMixin,CreateModelMixin):
         return self.list(request,*args,**kwargs)
 
     def  post(self,request,*args,**kwargs):
-        user=self.request.user
-        position=user.position
-        read=user.read_entries
-        create=user.create_entry
-        edit=user.edit_entry
-        delete=user.edit_entry
-        if position=="manager":
-            return self.create(request,*args,**kwargs)
-        return Response("You have not access")
+        # user=self.request.user
+        # position=user.position
+        # read=user.read_entries
+        # create=user.create_entry
+        # edit=user.edit_entry
+        # delete=user.edit_entry
+        # if position=="manager":
+        return self.create(request,*args,**kwargs)
+        # return Response("You have not access")
 
         
         
         
 
-class U_ProjectApiView(GenericAPIView,UpdateModelMixin,RetrieveModelMixin):
+class U_ProjectApiView(GenericAPIView,UpdateModelMixin,RetrieveModelMixin,DestroyModelMixin):
     queryset=Project.objects.all()
     serializer_class=ProjectSerializer
     authentication_classes=[SessionAuthentication]
@@ -54,17 +54,19 @@ class U_ProjectApiView(GenericAPIView,UpdateModelMixin,RetrieveModelMixin):
     def get(self,request,*args,**kwargs):
         return self.retrieve(request,*args,**kwargs)
 
-    def post(self,request,*args,**kwargs):
-        user=self.request.user
-        position=user.position
-        read=user.read_entries
-        create=user.create_entry
-        edit=user.edit_entry
-        delete=user.edit_entry
-        if position=="manager" :
+    def put(self,request,*args,**kwargs):
+        return self.update(request,*args,**kwargs)
+        # user=self.request.user
+        # position=user.position
+        # read=user.read_entries
+        # create=user.create_entry
+        # edit=user.edit_entry
+        # delete=user.edit_entry
+        # if position=="manager" :
 
-            return self.update(request,*args,**kwargs)
-        response('You dont have access')
+        # response('You dont have access')
+    def delete(self,request,*args,**kwargs):
+        return self.destroy(request,*args,**kwargs)
 
 class CR_TeamApiView(GenericAPIView,ListModelMixin,CreateModelMixin):
     queryset=Team.objects.all()
@@ -75,18 +77,18 @@ class CR_TeamApiView(GenericAPIView,ListModelMixin,CreateModelMixin):
         return self.list(request,*args,**kwargs)
 
     def  post(self,request,*args,**kwargs):
-        user=self.request.user
-        position=user.position
-        read=user.read_entries
-        create=user.create_entry
-        edit=user.edit_entry
-        delete=user.edit_entry
-        if position=="manager":
-            return self.create(request,*args,**kwargs)
-        response('You dont have access')
+        # user=self.request.user
+        # position=user.position
+        # read=user.read_entries
+        # create=user.create_entry
+        # edit=user.edit_entry
+        # delete=user.edit_entry
+        # if position=="manager":
+        return self.create(request,*args,**kwargs)
+        # response('You dont have access')
 
 
-class U_TeamApiView(GenericAPIView,UpdateModelMixin,RetrieveModelMixin):
+class U_TeamApiView(GenericAPIView,UpdateModelMixin,RetrieveModelMixin,DestroyModelMixin):
     queryset=Team.objects.all()
     serializer_class=TeamSerializer
     authentication_classes=[SessionAuthentication]
@@ -94,16 +96,20 @@ class U_TeamApiView(GenericAPIView,UpdateModelMixin,RetrieveModelMixin):
     def get(self,request,*args,**kwargs):
         return self.retrieve(request,*args,**kwargs)
 
-    def post(self,request,*args,**kwargs):
-        user=self.request.user
-        position=user.position
-        read=user.read_entries
-        create=user.create_entry
-        edit=user.edit_entry
-        delete=user.edit_entry
-        if position=="manager":
-            return self.create(request,*args,**kwargs)
+    def put(self,request,*args,**kwargs):
+        # user=self.request.user
+        # position=user.position
+        # read=user.read_entries
+        # create=user.create_entry
+        # edit=user.edit_entry
+        # delete=user.edit_entry
+        # if position=="manager":
+        return self.update(request,*args,**kwargs)
         response('You dont have access')
+
+
+    def delete(self,request,*args,**kwargs):
+        return self.destroy(request,*args,**kwargs)
 
 class CR_TeamMemberApiView(GenericAPIView,ListModelMixin,CreateModelMixin):
     queryset=TeamMember.objects.all()
@@ -115,17 +121,17 @@ class CR_TeamMemberApiView(GenericAPIView,ListModelMixin,CreateModelMixin):
         return self.list(request,*args,**kwargs)
 
     def  post(self,request,*args,**kwargs):
-        user=self.request.user
-        position=user.position
-        read=user.read_entries
-        create=user.create_entry
-        edit=user.edit_entry
-        delete=user.edit_entry
-        if position=="manager":
-            return self.create(request,*args,**kwargs)
-        response('You dont have access')
+        # user=self.request.user
+        # position=user.position
+        # read=user.read_entries
+        # create=user.create_entry
+        # edit=user.edit_entry
+        # delete=user.edit_entry
+        # if position=="manager":
+        return self.create(request,*args,**kwargs)
+        # response('You dont have access')
 
-class U_TeamMemberApiView(GenericAPIView,UpdateModelMixin,RetrieveModelMixin):
+class U_TeamMemberApiView(GenericAPIView,UpdateModelMixin,RetrieveModelMixin,DestroyModelMixin):
     queryset=TeamMember.objects.all()
     serializer_class=TeamMemberSerializer
     authentication_classes=[SessionAuthentication]
@@ -134,16 +140,12 @@ class U_TeamMemberApiView(GenericAPIView,UpdateModelMixin,RetrieveModelMixin):
     def get(self,request,*args,**kwargs):
         return self.retrieve(request,*args,**kwargs)
 
-    def post(self,request,*args,**kwargs):
-        user=self.request.user
-        position=user.position
-        read=user.read_entries
-        create=user.create_entry
-        edit=user.edit_entry
-        delete=user.edit_entry
-        if position=="manager" :
-            return self.create(request,*args,**kwargs)
-        response('You dont have access')
+
+    def put(self,request,*args,**kwargs):
+        return self.update(request,*args,**kwargs)
+
+    def delete(self,request,*args,**kwargs):
+        return self.destroy(request,*args,**kwargs)
 
 class CR_Tasks(GenericAPIView,ListModelMixin,CreateModelMixin):
     queryset=Tasks.objects.all()
@@ -157,18 +159,18 @@ class CR_Tasks(GenericAPIView,ListModelMixin,CreateModelMixin):
         return self.list(request,*args,**kwargs)
   
     def  post(self,request,*args,**kwargs):
-        user=self.request.user
-        position=user.position
-        read=user.read_entries
-        create=user.create_entry
-        edit=user.edit_entry
-        delete=user.edit_entry
-        if position=="manager" :
-            return self.create(request,*args,**kwargs)
-        response('You dont have access')
+        # user=self.request.user
+        # position=user.position
+        # read=user.read_entries
+        # create=user.create_entry
+        # edit=user.edit_entry
+        # delete=user.edit_entry
+        # if position=="manager" :
+        return self.create(request,*args,**kwargs)
+        # response('You dont have access')
    
 
-class U_Tasks(GenericAPIView,UpdateModelMixin,RetrieveModelMixin):
+class U_Tasks(GenericAPIView,UpdateModelMixin,RetrieveModelMixin,DestroyModelMixin):
     queryset=Tasks.objects.all()
     serializer_class=TasksSerializer
     authentication_classes=[SessionAuthentication]
@@ -178,16 +180,12 @@ class U_Tasks(GenericAPIView,UpdateModelMixin,RetrieveModelMixin):
     def get(self,request,*args,**kwargs):
         return self.retrieve(request,*args,**kwargs)
 
-    def post(self,request,*args,**kwargs):
-        user=self.request.user
-        position=user.position
-        read=user.read_entries
-        create=user.create_entry
-        edit=user.edit_entry
-        delete=user.edit_entry
-        if position=="manager" :
-            return self.create(request,*args,**kwargs)
-        response('You dont have access')
+
+    def put(self,request,*args,**kwargs):
+        return self.update(request,*args,**kwargs)
+
+    def delete(self,request,*args,**kwargs):
+        return self.destroy(request,*args,**kwargs)
 
 def home(request):
     context={}

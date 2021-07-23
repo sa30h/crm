@@ -16,6 +16,10 @@ urlpatterns = [
     path('update_inent/<pk>/',views.updateSEnt,name='update_inentry'),
     path('delete_invoice/<pk>/',views.deleteinvoice,name='delete_invoice'),
     path('delete_inent/<pk>/',views.deleteSEnt,name='delete_inentry'),
+    path('invoiceApi/',views.InvoiceApiView.as_view()),
+    path('invoiceApi/<int:pk>',views.UD_InvoiceApiView.as_view()),
+    path('poApi/',views.PoApiView.as_view()),
+    path('poApi/<int:pk>',views.UD_PoApiView.as_view()),
 
 
     # po - purchase order

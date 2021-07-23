@@ -7,13 +7,15 @@ from django.contrib.auth import authenticate,login,get_user_model,logout
 from rest_framework import generics
 from rest_framework.response import Response
 from django.contrib import messages
+from rest_framework.authentication import SessionAuthentication
 
 
 from .forms import *
 from django.http import HttpResponse
-from .serializers import RegisterApiSerializer,LoginSerializer
+from .serializers import *
 from rest_framework.generics import GenericAPIView
-from rest_framework.mixins import ListModelMixin,CreateModelMixin
+from rest_framework.mixins import ListModelMixin,CreateModelMixin,RetrieveModelMixin,UpdateModelMixin,DestroyModelMixin
+
 from ProjectManagement.models import Project 
 from django.db.models import Q
 import json
@@ -36,6 +38,22 @@ class RegisterApiView(GenericAPIView,ListModelMixin,CreateModelMixin):
 
     def post(self,request,*args,**kwargs):
         return self.create(request,*args,**kwargs)
+
+class UD_RegisterApiView(GenericAPIView,UpdateModelMixin,RetrieveModelMixin,DestroyModelMixin):
+    queryset=User.objects.all()
+    serializer_class=RegisterApiSerializer
+    authentication_classes=[SessionAuthentication]
+
+
+
+    def get(self,request,*args,**kwargs):
+        return self.retrieve(request,*args,**kwargs)
+
+    def put(self,request,*args,**kwargs):
+        return self.update(request,*args,**kwargs)
+
+    def delete(self,request,*args,**kwargs):
+        return self.destroy(request,*args,**kwargs)
 
 class LoginWithTokenAuthenticationAPIView(GenericAPIView):
     queryset= User.objects.all()
@@ -71,7 +89,164 @@ class LoginWithTokenAuthenticationAPIView(GenericAPIView):
     }
         return Response(response)
 
+class CompanyApiView(GenericAPIView,ListModelMixin,CreateModelMixin):
+    queryset=Company.objects.all()
+    serializer_class=CompanySerializer
+    authentication_classes=[SessionAuthentication]
+    def get(self,request,*args,**kwargs):
+        return self.list(request,*args,**kwargs)
 
+    def post(self,request,*args,**kwargs):
+        return self.create(request,*args,**kwargs)
+
+class UD_CompanyApiView(GenericAPIView,UpdateModelMixin,RetrieveModelMixin,DestroyModelMixin):
+    queryset=Company.objects.all()
+    serializer_class=CompanySerializer
+    authentication_classes=[SessionAuthentication]
+
+
+
+    def get(self,request,*args,**kwargs):
+        return self.retrieve(request,*args,**kwargs)
+
+    def put(self,request,*args,**kwargs):
+        return self.update(request,*args,**kwargs)
+
+    def delete(self,request,*args,**kwargs):
+        return self.destroy(request,*args,**kwargs)
+
+class ContactpersonApiView(GenericAPIView,ListModelMixin,CreateModelMixin):
+    queryset=ContactPerson.objects.all()
+    serializer_class=ContactpersonSerializer
+    authentication_classes=[SessionAuthentication]
+    def get(self,request,*args,**kwargs):
+        return self.list(request,*args,**kwargs)
+
+    def post(self,request,*args,**kwargs):
+        return self.create(request,*args,**kwargs)
+
+class UD_ContactpersonApiView(GenericAPIView,UpdateModelMixin,RetrieveModelMixin,DestroyModelMixin):
+    queryset=ContactPerson.objects.all()
+    serializer_class=ContactpersonSerializer
+    authentication_classes=[SessionAuthentication]
+
+
+
+    def get(self,request,*args,**kwargs):
+        return self.retrieve(request,*args,**kwargs)
+
+    def put(self,request,*args,**kwargs):
+        return self.update(request,*args,**kwargs)
+
+    def delete(self,request,*args,**kwargs):
+        return self.destroy(request,*args,**kwargs)
+
+class PositionApiView(GenericAPIView,ListModelMixin,CreateModelMixin):
+    queryset=Position.objects.all()
+    serializer_class=PositionSerializer
+    authentication_classes=[SessionAuthentication]
+    def get(self,request,*args,**kwargs):
+        return self.list(request,*args,**kwargs)
+
+    def post(self,request,*args,**kwargs):
+        return self.create(request,*args,**kwargs)
+
+class UD_PositionApiView(GenericAPIView,UpdateModelMixin,RetrieveModelMixin,DestroyModelMixin):
+    queryset=Position.objects.all()
+    serializer_class=PositionSerializer
+    authentication_classes=[SessionAuthentication]
+
+
+
+    def get(self,request,*args,**kwargs):
+        return self.retrieve(request,*args,**kwargs)
+
+    def put(self,request,*args,**kwargs):
+        return self.update(request,*args,**kwargs)
+
+    def delete(self,request,*args,**kwargs):
+        return self.destroy(request,*args,**kwargs)
+
+class DepartmentApiView(GenericAPIView,ListModelMixin,CreateModelMixin):
+    queryset=Department.objects.all()
+    serializer_class=DepartmentSerializer
+    authentication_classes=[SessionAuthentication]
+
+    def get(self,request,*args,**kwargs):
+        return self.list(request,*args,**kwargs)
+
+    def post(self,request,*args,**kwargs):
+        return self.create(request,*args,**kwargs)
+
+class UD_DepartmentApiView(GenericAPIView,UpdateModelMixin,RetrieveModelMixin,DestroyModelMixin):
+    queryset=Department.objects.all()
+    serializer_class=DepartmentSerializer
+    authentication_classes=[SessionAuthentication]
+
+
+
+    def get(self,request,*args,**kwargs):
+        return self.retrieve(request,*args,**kwargs)
+
+    def put(self,request,*args,**kwargs):
+        return self.update(request,*args,**kwargs)
+
+    def delete(self,request,*args,**kwargs):
+        return self.destroy(request,*args,**kwargs)
+
+class BusinessApiView(GenericAPIView,ListModelMixin,CreateModelMixin):
+    queryset=Business.objects.all()
+    serializer_class=BusinessSerializer
+    authentication_classes=[SessionAuthentication]
+
+    def get(self,request,*args,**kwargs):
+        return self.list(request,*args,**kwargs)
+        
+    def post(self,request,*args,**kwargs):
+        return self.create(request,*args,**kwargs)
+
+class UD_BusinessApiView(GenericAPIView,UpdateModelMixin,RetrieveModelMixin,DestroyModelMixin):
+    queryset=Business.objects.all()
+    serializer_class=BusinessSerializer
+    authentication_classes=[SessionAuthentication]
+
+
+
+    def get(self,request,*args,**kwargs):
+        return self.retrieve(request,*args,**kwargs)
+
+    def put(self,request,*args,**kwargs):
+        return self.update(request,*args,**kwargs)
+
+    def delete(self,request,*args,**kwargs):
+        return self.destroy(request,*args,**kwargs)
+
+class CustomerApiView(GenericAPIView,ListModelMixin,CreateModelMixin):
+    queryset=Customer.objects.all()
+    serializer_class=CustomerSerializer
+    authentication_classes=[SessionAuthentication]
+
+    def get(self,request,*args,**kwargs):
+        return self.list(request,*args,**kwargs)
+        
+    def post(self,request,*args,**kwargs):
+        return self.create(request,*args,**kwargs)
+
+class UD_CustomerApiView(GenericAPIView,UpdateModelMixin,RetrieveModelMixin,DestroyModelMixin):
+    queryset=Customer.objects.all()
+    serializer_class=CustomerSerializer
+    authentication_classes=[SessionAuthentication]
+
+
+
+    def get(self,request,*args,**kwargs):
+        return self.retrieve(request,*args,**kwargs)
+
+    def put(self,request,*args,**kwargs):
+        return self.update(request,*args,**kwargs)
+
+    def delete(self,request,*args,**kwargs):
+        return self.destroy(request,*args,**kwargs)
 
 
 

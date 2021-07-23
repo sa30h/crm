@@ -11,7 +11,16 @@ urlpatterns = [
 
     # sa30 Api
     path('registerApi/',views.RegisterApiView.as_view()),
+    path('registerApi/<int:pk>',views.UD_RegisterApiView.as_view()),
     path('loginApi/',views.LoginWithTokenAuthenticationAPIView.as_view()),
+    path('positionApi/',views.PositionApiView.as_view()),
+    path('positionApi/<int:pk>',views.UD_PositionApiView.as_view()),
+    path('departmentApi/',views.DepartmentApiView.as_view()),
+    path('departmentApi/<int:pk>',views.UD_DepartmentApiView.as_view()),
+    path('businessApi/',views.BusinessApiView.as_view()),
+    path('businessApi/<int:pk>',views.UD_BusinessApiView.as_view()),
+    path('customerApi/',views.CustomerApiView.as_view()),
+    path('customerApi/<int:pk>',views.UD_CustomerApiView.as_view()),
     #sa30 Api
     path('register/',views.registraiton_view,name="register"),
     path('position/',views.position_view,name="position"),
@@ -31,6 +40,8 @@ urlpatterns = [
     path('addcontactperson/',views.addcontactperson,name="addcontactperson"),
     path('contactpersonupdate/<int:id>',views.contactpersonupdate,name="contactpersonupdate"),
     path('contactpersondelete/<int:id>',views.contactpersondelete,name="contactpersondelete"),
+    path('contactpersonApi/',views.ContactpersonApiView.as_view()),
+    path('contactpersonApi/<int:pk>',views.UD_ContactpersonApiView.as_view()),
     path('calenderview/',views.calenderview,name="calenderview"),
     path('userScorecard/',views.userScorecard,name="userScorecard"),
 
@@ -49,6 +60,8 @@ urlpatterns = [
 
     path('company/', views.company, name = 'company'),
     path('company/<pk>/', views.compinfo, name = 'compinfo'),
+    path('companyApi/',views.CompanyApiView.as_view()),
+    path('companyApi/<int:pk>',views.UD_CompanyApiView.as_view()),
 
     path('employee/', views.employee, name = 'employee'),
     path('employee/<pk>', views.empinfo, name = 'empinfo'),

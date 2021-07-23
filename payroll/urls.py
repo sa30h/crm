@@ -21,6 +21,10 @@ urlpatterns = [
     path('update_monthsal/<pk>',views.updateMonthSal,name='update_monthsalv'),
     path('delete_monthsal/<pk>/',views.deleteMonthSal,name='delete_monthsal'),
     path('delete_monthsal/<pk>/',views.deleteMonthSal,name='delete_monthsalv'),
+    path('employeeApi/',views.EmployeepackageApiView.as_view()),
+    path('employeeApi/<int:pk>',views.UD_EmployeepackageApiView.as_view()),
+    path('packageApi/',views.MonthlysalaryApiView.as_view()),
+    path('packageApi/<int:pk>',views.UD_MonthlysalaryApiView.as_view()),
 
 ]
 

@@ -33,6 +33,10 @@ urlpatterns = [
     path('complaint/<int:id>',views.complaintview,name='complaintview'),
     path('complaintdelete/<int:id>',views.complaintdelete,name='complaintdelete'),
     path('complaintupdate/<int:id>',views.complaintupdate,name='complaintupdate'),
+    path('complaintApi/',views.ComplaintApiView.as_view()),
+    path('complaintApi/<int:pk>',views.UD_ComplaintApiView.as_view()),
+    path('serviceApi/',views.ServiceApiView.as_view()),
+    path('serviceApi/<int:pk>',views.UD_ServiceApiView.as_view()),
 
 
 ]
